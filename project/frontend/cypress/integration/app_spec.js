@@ -22,8 +22,19 @@ describe("Django REST framework / React quickstart app", () => {
           .get('input[name="email"]')
           .type(lead.email)
           .should("have.value", lead.email)
+
+        cy
+          .get('textarea[name="message"]')
+          .type(lead.message)
+          .should("have.value", lead.message)
         
-        cy.get("from").submit();
+        cy.get("form").submit();
     });
-    // more tests here
+
+    it("should be able to see the table", () => {
+        cy.visit("/");
+
+        cy
+          .get("tr").contains(`${lead.name}${lead.email}${lead.message}`);
+    });
 })
