@@ -4,6 +4,7 @@ import { HashRouter, Route, Link } from "react-router-dom";
 import DataProvider from "./DataProvider";
 import Table from "./Table";
 import Form from "./Form";
+import Item from "./Item";
 
 const App = () => (
   <HashRouter hashType="noslash">
@@ -13,16 +14,17 @@ const App = () => (
       <li><Link to='/table'>Table</Link></li>
     </ul>
 
-    <Route path='/' component={Home} />
-    <Route exact path='/table' component={TableView} />
+    <Route exact path='/' component={Home} />
+    <Route path='/table' component={TableView} />
   </div>
   </HashRouter>
 );
 
 const Home = () => (
-  <div>
-    <h2>Home</h2>
-  </div>
+  <React.Fragment>
+    <DataProvider endpoint="api/lead/"
+                  render={data => <Item data={data} />} />
+  </React.Fragment>
 )
 
 const TableView = () => (
