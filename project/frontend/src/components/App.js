@@ -4,7 +4,7 @@ import { HashRouter, Route, Link } from "react-router-dom";
 import DataProvider from "./DataProvider";
 import Table from "./Table";
 import Form from "./Form";
-import Item from "./Item";
+import ItemList, {ItemView} from "./Item";
 
 const App = () => (
   <HashRouter hashType="noslash">
@@ -12,10 +12,12 @@ const App = () => (
     <ul>
       <li><Link to='/'>Home</Link></li>
       <li><Link to='/table'>Table</Link></li>
+      <li><Link to='/table/999'>One</Link></li>
     </ul>
 
     <Route exact path='/' component={Home} />
-    <Route path='/table' component={TableView} />
+    <Route exact path='/table' component={TableView} />
+    <Route path='/table/:id' component={TableOne} />
   </div>
   </HashRouter>
 );
@@ -23,7 +25,7 @@ const App = () => (
 const Home = () => (
   <React.Fragment>
     <DataProvider endpoint="api/lead/"
-                  render={data => <Item data={data} />} />
+                  render={data => <ItemList data={data} />} />
   </React.Fragment>
 )
 
@@ -34,6 +36,17 @@ const TableView = () => (
     <Form endpoint="api/lead/" />
   </React.Fragment>
 )
+
+const TableOne = props => {
+  const { id } = props.match.params;
+
+  return (
+    <React.Fragment>
+      <DataProvider endpoint={`api/lead/${id}/`}
+                    render={data => <ItemView data={data} />} />
+    </React.Fragment>
+  )
+}
 
 const wrapper = document.getElementById("app");
 

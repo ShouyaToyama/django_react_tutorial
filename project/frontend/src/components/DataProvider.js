@@ -16,6 +16,7 @@ class DataProvider extends Component {
     componentDidMount() {
         fetch(this.props.endpoint)
             .then(response => {
+                console.info(response);
                 if (response.status !== 200) {
                     return this.setState({
                         placeholder: "Something went wrong"
