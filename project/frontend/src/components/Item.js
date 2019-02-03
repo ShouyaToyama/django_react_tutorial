@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-
+import { Item } from "semantic-ui-react";
 
 const ItemList = ({data}) => 
     !data.length ? (
