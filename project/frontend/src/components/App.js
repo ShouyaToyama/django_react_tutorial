@@ -5,6 +5,7 @@ import DataProvider from "./DataProvider";
 import Table from "./Table";
 import Form from "./Form";
 import ItemList, {ItemView} from "./Item";
+import { Continer, Container } from "semantic-ui-react";
 
 const App = () => (
   <HashRouter hashType="noslash">
@@ -23,10 +24,10 @@ const App = () => (
 );
 
 const Home = () => (
-  <React.Fragment>
+  <Container>
     <DataProvider endpoint="api/lead/"
                   render={data => <ItemList data={data} />} />
-  </React.Fragment>
+  </Container>
 )
 
 const TableView = () => (
