@@ -5,9 +5,12 @@ import DataProvider from "./DataProvider";
 import Table from "./Table";
 import Form from "./Form";
 import ItemList, {ItemView} from "./Item";
-import { Continer, Container } from "semantic-ui-react";
+import SidebarExampleVisible from "./Sidebar";
+import { Container } from "semantic-ui-react";
 
 const App = () => (
+  <>
+  {/* <SidebarExampleVisible /> */}
   <HashRouter hashType="noslash">
   <div>
     <ul>
@@ -21,6 +24,7 @@ const App = () => (
     <Route path='/table/:id' component={TableOne} />
   </div>
   </HashRouter>
+  </>
 );
 
 const Home = () => (
